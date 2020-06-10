@@ -42,7 +42,7 @@ class Student
   def self.students_below_12th_grade
     sql = <<-SQL
           SELECT * FROM students 
-          WHERE students.grade > '12'
+          WHERE students.grade < '12'
           SQL
     DB[:conn].execute(sql).collect do |row|
       Student.new_from_db(row)
