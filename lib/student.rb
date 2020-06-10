@@ -14,7 +14,7 @@ class Student
           SELECT * FROM students
           SQL
     DB[:conn].execute(sql).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
 
@@ -25,7 +25,7 @@ class Student
           LIMIT 1
           SQL
     DB[:conn].execute(sql,name).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end.first
   end
   
@@ -35,7 +35,7 @@ class Student
           WHERE students.grade = '9'
           SQL
     DB[:conn].execute(sql).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
   
@@ -45,7 +45,7 @@ class Student
           WHERE students.grade > '12'
           SQL
     DB[:conn].execute(sql).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
   
@@ -56,7 +56,7 @@ class Student
           LIMIT ?
           SQL
     DB[:conn].execute(sql,num).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
   
@@ -67,7 +67,7 @@ class Student
           LIMIT 1
           SQL
     DB[:conn].execute(sql).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
   
@@ -77,7 +77,7 @@ class Student
           WHERE students.grade = ?
           SQL
     DB[:conn].execute(sql,grade).collect do |row|
-      Song.new_from_db(row)
+      Student.new_from_db(row)
     end
   end
   
