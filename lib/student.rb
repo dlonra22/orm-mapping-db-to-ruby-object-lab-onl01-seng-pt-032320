@@ -42,7 +42,17 @@ class Student
   def students_below_12th_grade
     sql = <<-SQL
           SELECT * FROM students 
-          WHERE students.grade = '9th'
+          WHERE students.grade > '12'
+          SQL
+    DB[:conn].execute(sql).collect do |row|
+      Song.new_from_db(row)
+    end
+  end
+  
+  def students_below_12th_grade
+    sql = <<-SQL
+          SELECT * FROM students 
+          WHERE students.grade > '12'
           SQL
     DB[:conn].execute(sql).collect do |row|
       Song.new_from_db(row)
