@@ -32,7 +32,7 @@ class Student
   def all_students_in_grade_9
     sql = <<-SQL
           SELECT * FROM students 
-          WHERE students.grade = '9th'
+          WHERE students.grade = '9'
           SQL
     DB[:conn].execute(sql).collect do |row|
       Song.new_from_db(row)
@@ -71,13 +71,12 @@ class Student
     end
   end
   
-  def self..all_students_in_grade_X
+  def self..all_students_in_grade_X(grade)
     sql = <<-SQL
           SELECT * FROM students 
-          WHERE students.grade = '10'
-          LIMIT 1
+          WHERE students.grade = ?
           SQL
-    DB[:conn].execute(sql).collect do |row|
+    DB[:conn].execute(sql,grade).collect do |row|
       Song.new_from_db(row)
     end
   end
